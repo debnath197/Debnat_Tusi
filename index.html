@@ -1,96 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Simple Flow</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Memory ❤️</title>
 
 <style>
+
 body{
   margin:0;
   text-align:center;
-  font-family:Arial, sans-serif;
-}
-
-.page{
-  display:none;
-}
-
-/* PAGE 2 IMAGE */
-img{
-  width:100%;
-  height:100vh;
-  object-fit:cover;
-}
-
-/* PAGE 3 BACKGROUND IMAGE */
-.bg{
-  background:url("tusi bari.jpeg") no-repeat center center;
-  background-size:cover;
-  height:100vh;
-  position:relative;
+  font-family:Segoe UI;
+  background:linear-gradient(to right,#ff758f,#ff7eb3);
   color:white;
 }
 
-/* LOVE TEXT */
-.love{
-  position:absolute;
-  top:35%;
+/* Full image top */
+.main-img{
   width:100%;
-  font-size:55px;
-  font-weight:bold;
-  text-shadow:0 0 20px red, 0 0 40px pink;
+  max-height:80vh;
+  object-fit:cover;
 }
 
-/* BUTTON STYLE */
-.link, .td{
-  font-size:30px;
-  cursor:pointer;
+/* TD button */
+.td-btn{
   margin-top:20px;
+  font-size:28px;
+  font-weight:bold;
+  cursor:pointer;
+  background:white;
+  color:#ff4d6d;
+  display:inline-block;
+  padding:12px 35px;
+  border-radius:40px;
+  transition:0.3s;
 }
 
-/* TD BOTTOM */
-.bottom{
-  position:absolute;
-  bottom:30px;
-  width:100%;
+.td-btn:hover{
+  background:#ffe0ea;
 }
+
 </style>
-
 </head>
 
 <body>
 
 <!-- PAGE 1 -->
-<div id="page1" class="page" style="display:block;">
-  <div class="link" onclick="showPage('page2')">OPEN</div>
+<div id="page1">
+
+<img src="TAJ.jpeg" class="main-img">
+
+<div class="td-btn" onclick="openPage2()">TD 💖</div>
+
 </div>
 
-<!-- PAGE 2 (TAJ IMAGE) -->
-<div id="page2" class="page">
-  <img src="taj.jpg">
-  <div class="td" onclick="showPage('page3')">TD</div>
+
+<!-- PAGE 2 -->
+<div id="page2" style="display:none;">
+
+<h1>Welcome To Our Love Page ❤️</h1>
+
+<p>
+এখানে তুমি চাইলে anniversary wish,  
+gallery বা special message বসাতে পারো 💕
+</p>
+
 </div>
 
-<!-- PAGE 3 (WEDDING IMAGE BACKGROUND) -->
-<div id="page3" class="page bg">
-  <div class="love">LOVE ❤️</div>
-
-  <div class="bottom">
-    <div class="td" onclick="showPage('page4')">TD</div>
-  </div>
-</div>
-
-<!-- PAGE 4 (BLANK PAGE) -->
-<div id="page4" class="page">
-</div>
 
 <script>
-function showPage(pageId){
-  var pages = document.getElementsByClassName("page");
-  for(var i=0;i<pages.length;i++){
-    pages[i].style.display="none";
-  }
-  document.getElementById(pageId).style.display="block";
+
+function openPage2(){
+  document.getElementById("page1").style.display="none";
+  document.getElementById("page2").style.display="block";
 }
+
 </script>
 
 </body>
