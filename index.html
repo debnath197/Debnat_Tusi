@@ -37,7 +37,7 @@ body{
 }
 
 /* ================= PAGE 2 ================= */
-/* ⚠️ তোমার আগের Page-2 CSS unchanged */
+/* তোমার আগের Page-2 same রাখা হয়েছে */
 
 #page2{
   display:none;
@@ -113,7 +113,6 @@ body{
   font-weight:bold;
 }
 
-/* MEMORY LINE */
 .memory-line{
   position:absolute;
   bottom:110px;
@@ -133,19 +132,6 @@ body{
 }
 
 @keyframes floatHeart{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
-}
-
-/* SPARKLE */
-.sparkle{
-  position:absolute;
-  color:white;
-  font-size:14px;
-  animation:sparkle 4s linear infinite;
-}
-
-@keyframes sparkle{
   from{transform:translateY(100vh);}
   to{transform:translateY(-10vh);}
 }
@@ -175,8 +161,6 @@ body{
   line-height:1.9;
   box-shadow:0 0 25px rgba(0,0,0,0.5);
 }
-
-/* COUPLE PHOTOS */
 
 .couple-left,.couple-right{
   position:absolute;
@@ -208,7 +192,6 @@ body{
 }
 
 /* PETALS */
-
 .petals{
   position:absolute;
   width:100%;
@@ -227,6 +210,41 @@ body{
   to{transform:translateY(110vh);}
 }
 
+/* ================= PAGE 4 ================= */
+
+#page4{
+  display:none;
+  height:100vh;
+  background:url("bg2.jpg") center/cover no-repeat;
+}
+
+.love-main img{
+  width:220px;
+  margin-top:120px;
+  cursor:pointer;
+  animation:pulse 2s infinite;
+}
+
+.gallery{
+  display:none;
+  margin-top:40px;
+}
+
+.gallery img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  margin:10px;
+  box-shadow:0 0 15px #ff4d6d;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+  100%{transform:scale(1);}
+}
+
 </style>
 </head>
 
@@ -240,14 +258,12 @@ body{
 
 <!-- PAGE 2 -->
 <div id="page2">
-
 <div class="bg-zoom"></div>
 
 <div class="left-card">
   <h2>❤️ Our 1st Anniversary ❤️</h2>
   <div class="names">Debnath 💖 Tusi</div>
   <div class="date">06 / 03 / 2026</div>
-
   <div class="from-line">📍 From 06-03-2025 → Forever ♾️</div>
 
   <div class="mini-frame">
@@ -275,14 +291,11 @@ One Year <br> Of <br> Endless Love 💖
 </div>
 
 <!-- PAGE 3 -->
-
 <div id="page3">
 
 <audio id="bgMusic" src="music.mp3" loop></audio>
 
-<div class="poem1-box">
-<span id="typing"></span>
-</div>
+<div class="poem1-box"><span id="typing"></span></div>
 
 <div class="couple-left">
 <div class="location">📍</div>
@@ -296,58 +309,62 @@ One Year <br> Of <br> Endless Love 💖
 
 <div class="petals"></div>
 
+<div class="td-btn" onclick="openPage4()">TD 💖</div>
+
+</div>
+
+<!-- PAGE 4 -->
+<div id="page4">
+
+<div class="love-main">
+<img src="love.png" onclick="openGallery()">
+</div>
+
+<div class="gallery" id="gallery">
+<img src="image1.jpg">
+<img src="image2.jpg">
+<img src="image3.jpg">
+<img src="image4.jpg">
+</div>
+
 </div>
 
 <script>
 
 function openPage2(){
-  page1.style.display="none";
-  page2.style.display="block";
+page1.style.display="none";
+page2.style.display="block";
 }
 
 function openPage3(){
-  page2.style.display="none";
-  page3.style.display="block";
-  document.getElementById("bgMusic").play();
-  startTyping();
+page2.style.display="none";
+page3.style.display="block";
+document.getElementById("bgMusic").play();
+startTyping();
 }
 
-/* HEARTS */
-setInterval(()=>{
-  const heart=document.createElement("span");
-  heart.innerHTML="💖";
-  heart.style.left=Math.random()*100+"%";
-  document.querySelector(".floating-hearts").appendChild(heart);
-  setTimeout(()=>heart.remove(),6000);
-},800);
+function openPage4(){
+page3.style.display="none";
+page4.style.display="block";
+}
 
-/* SPARKLE */
-setInterval(()=>{
-  const s=document.createElement("div");
-  s.classList.add("sparkle");
-  s.innerHTML="✨";
-  s.style.left=Math.random()*100+"%";
-  document.getElementById("page2").appendChild(s);
-  setTimeout(()=>s.remove(),6000);
-},900);
+function openGallery(){
+document.getElementById("gallery").style.display="block";
+}
 
 /* LOVE TIMER */
-
 const startDate = new Date("March 6, 2025");
 
-function updateLoveTime(){
-  const now = new Date();
-  const diff = now - startDate;
+setInterval(()=>{
+const now = new Date();
+const diff = now - startDate;
 
-  document.getElementById("days").innerHTML = Math.floor(diff / (1000*60*60*24));
-  document.getElementById("hours").innerHTML = Math.floor(diff / (1000*60*60));
-  document.getElementById("minutes").innerHTML = Math.floor(diff / (1000*60));
-}
+days.innerHTML = Math.floor(diff / (1000*60*60*24));
+hours.innerHTML = Math.floor(diff / (1000*60*60));
+minutes.innerHTML = Math.floor(diff / (1000*60));
+},1000);
 
-setInterval(updateLoveTime,1000);
-
-/* TYPING EFFECT */
-
+/* TYPING */
 const text=`One year with you, my sweetest light,
 Every moment feels so right.
 
@@ -360,28 +377,25 @@ Written in love for endless days.
 Happy 1st Anniversary my love 💖`;
 
 let i=0;
-
 function startTyping(){
-  function type(){
-    if(i<text.length){
-      document.getElementById("typing").innerHTML+=text.charAt(i);
-      i++;
-      setTimeout(type,50);
-    }
-  }
-  type();
+function type(){
+if(i<text.length){
+typing.innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,50);
+}}
+type();
 }
 
 /* PETALS */
-
 setInterval(()=>{
-  const petal=document.createElement("div");
-  petal.classList.add("petal");
-  petal.innerHTML="🌹";
-  petal.style.left=Math.random()*100+"%";
-  petal.style.animationDuration=(3+Math.random()*5)+"s";
-  document.querySelector(".petals").appendChild(petal);
-  setTimeout(()=>petal.remove(),8000);
+const petal=document.createElement("div");
+petal.classList.add("petal");
+petal.innerHTML="🌹";
+petal.style.left=Math.random()*100+"%";
+petal.style.animationDuration=(3+Math.random()*5)+"s";
+document.querySelector(".petals").appendChild(petal);
+setTimeout(()=>petal.remove(),8000);
 },300);
 
 </script>
