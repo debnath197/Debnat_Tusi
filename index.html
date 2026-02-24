@@ -50,25 +50,89 @@ body{
   width:100%;
   height:100%;
   background:url("tusi bari1.jpeg") center/cover no-repeat;
+  animation:zoomBg 20s infinite alternate;
 }
 
+@keyframes zoomBg{
+  from{transform:scale(1);}
+  to{transform:scale(1.08);}
+}
+
+/* LEFT CARD */
 .left-card{
   position:absolute;
   top:50%;
   left:30px;
   transform:translateY(-50%);
   background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
   padding:30px 25px;
   border-radius:25px;
   color:white;
   text-align:left;
   border-left:4px solid #ff4d6d;
+  box-shadow:0 0 25px rgba(0,0,0,0.3);
+  animation:cardGlow 3s infinite alternate;
+}
+
+@keyframes cardGlow{
+  from{box-shadow:0 0 15px rgba(255,255,255,0.3);}
+  to{box-shadow:0 0 35px rgba(255,77,109,0.9);}
+}
+
+.names{font-size:22px;margin:10px 0;}
+.date{font-size:18px;}
+.from-line{margin-top:10px;font-size:15px;}
+
+.mini-frame{display:flex;gap:8px;margin-top:12px;}
+.mini-frame img{
+  width:45px;height:45px;border-radius:50%;
+  border:2px solid white;object-fit:cover;
+  box-shadow:0 0 10px #ff4d6d;
 }
 
 .love-counter{
   margin-top:12px;
-  font-size:16px;
+  font-size:15px;
   line-height:1.6;
+  text-shadow:0 0 8px #ff4d6d;
+}
+
+/* RIGHT LOVE TEXT */
+.side-love-text{
+  position:absolute;
+  right:40px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:42px;
+  color:white;
+  text-align:right;
+  line-height:1.3;
+  text-shadow:0 0 20px #ff4d6d;
+  font-weight:bold;
+}
+
+.memory-line{
+  position:absolute;
+  bottom:110px;
+  width:100%;
+  text-align:center;
+  color:white;
+  font-size:18px;
+  text-shadow:0 0 10px #ff4d6d;
+}
+
+/* FLOATING HEARTS */
+.floating-hearts span{
+  position:absolute;
+  color:#ff4d6d;
+  font-size:20px;
+  animation:floatHeart 6s linear infinite;
+}
+
+@keyframes floatHeart{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 
 /* ================= PAGE 3 ================= */
@@ -282,3 +346,4 @@ type();
 
 </body>
 </html>
+
