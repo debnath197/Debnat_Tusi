@@ -36,9 +36,167 @@ body{
   object-fit:cover;
 }
 
-/* ⚠️ PAGE 2 & PAGE 3 তোমার আগের মতোই থাকবে */
+/* ================= PAGE 2 ================= */
+/* ❌ unchanged */
 
-/* ================= PAGE 4 ================= */
+#page2{
+  display:none;
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+.bg-zoom{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:url("tusi bari1.jpeg") center/cover no-repeat;
+  animation:zoomBg 20s infinite alternate;
+}
+
+@keyframes zoomBg{
+  from{transform:scale(1);}
+  to{transform:scale(1.08);}
+}
+
+/* LEFT CARD */
+.left-card{
+  position:absolute;
+  top:50%;
+  left:30px;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  padding:30px 25px;
+  border-radius:25px;
+  color:white;
+  text-align:left;
+  border-left:4px solid #ff4d6d;
+  box-shadow:0 0 25px rgba(0,0,0,0.3);
+  animation:cardGlow 3s infinite alternate;
+}
+
+@keyframes cardGlow{
+  from{box-shadow:0 0 15px rgba(255,255,255,0.3);}
+  to{box-shadow:0 0 35px rgba(255,77,109,0.9);}
+}
+
+.names{font-size:22px;margin:10px 0;}
+.date{font-size:18px;}
+.from-line{margin-top:10px;font-size:15px;}
+
+.mini-frame{display:flex;gap:8px;margin-top:12px;}
+.mini-frame img{
+  width:45px;height:45px;border-radius:50%;
+  border:2px solid white;object-fit:cover;
+  box-shadow:0 0 10px #ff4d6d;
+}
+
+.love-counter{
+  margin-top:12px;
+  font-size:15px;
+  line-height:1.6;
+  text-shadow:0 0 8px #ff4d6d;
+}
+
+.side-love-text{
+  position:absolute;
+  right:40px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:42px;
+  color:white;
+  text-align:right;
+  line-height:1.3;
+  text-shadow:0 0 20px #ff4d6d;
+  font-weight:bold;
+}
+
+.memory-line{
+  position:absolute;
+  bottom:110px;
+  width:100%;
+  text-align:center;
+  color:white;
+  font-size:18px;
+  text-shadow:0 0 10px #ff4d6d;
+}
+
+/* ================= PAGE 3 ================= */
+/* ❌ unchanged */
+
+#page3{
+  display:none;
+  height:100vh;
+  background:url("poem1.jpg") center/cover no-repeat;
+  position:relative;
+}
+
+.poem1-box{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:85%;
+  max-width:420px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(6px);
+  color:#ffd60a;
+  font-size:20px;
+  line-height:1.9;
+  box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+.couple-left,.couple-right{
+  position:absolute;
+  top:65%;
+  transform:translateY(-50%);
+  text-align:center;
+}
+
+.couple-left{ left:25px; }
+.couple-right{ right:25px; }
+
+.couple-left img,.couple-right img{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  border:4px solid white;
+  object-fit:cover;
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{box-shadow:0 0 10px #fff;}
+  to{box-shadow:0 0 30px #ff4d6d;}
+}
+
+.location{
+  font-size:26px;
+  margin-bottom:6px;
+}
+
+.petals{
+  position:absolute;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+.petal{
+  position:absolute;
+  top:-20px;
+  font-size:22px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh);}
+}
+
+/* ================= PAGE 4 (UPDATED ONLY) ================= */
 
 #page4{
   display:none;
@@ -47,21 +205,20 @@ body{
   position:relative;
 }
 
-/* 💖 HUGE LOVE SYMBOL */
-
+/* HUGE LOVE ICON */
 .love-main img{
   width:420px;
-  margin-top:30px;
-  animation:pulse 2s infinite;
+  margin-top:20px;
   cursor:pointer;
+  animation:pulse 2s infinite;
 }
 
-/* ROUND IMAGE STYLE */
+/* MEMORY IMAGES */
 
-.mem{
+.gallery img{
   position:absolute;
-  width:160px;
-  height:160px;
+  width:170px;
+  height:170px;
   border-radius:50%;
   object-fit:cover;
   border:4px solid white;
@@ -69,13 +226,13 @@ body{
   display:none;
 }
 
-/* 🎯 IMAGE POSITIONS (GRASS + BUILDING TOP) */
+/* 🌿 GRASS AREA */
+.img1{ bottom:40px; left:40px; }
+.img2{ bottom:60px; right:40px; }
 
-.img1{ bottom:40px; left:40px; }      /* grass left */
-.img2{ bottom:60px; right:40px; }     /* grass right */
-
-.img3{ top:160px; left:120px; }       /* building left */
-.img4{ top:160px; right:120px; }      /* building right */
+/* 🏢 BUILDING TOP */
+.img3{ top:150px; left:120px; }
+.img4{ top:150px; right:120px; }
 
 @keyframes pulse{
   0%{transform:scale(1);}
@@ -96,56 +253,58 @@ body{
 
 <!-- PAGE 2 -->
 <div id="page2">
-  <!-- তোমার আগের Page-2 same -->
+  <!-- same -->
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3">
-  <!-- তোমার আগের Page-3 same -->
 
-  <div class="td-btn" onclick="openPage4()">TD 💖</div>
+<audio id="bgMusic" src="music.mp3" loop></audio>
+
+<div class="poem1-box"><span id="typing"></span></div>
+
+<div class="couple-left">
+<div class="location">📍</div>
+<img src="my.jpg">
+</div>
+
+<div class="couple-right">
+<div class="location">📍</div>
+<img src="wife.jpg">
+</div>
+
+<div class="petals"></div>
+
+<div class="td-btn" onclick="openPage4()">TD 💖</div>
+
 </div>
 
 <!-- PAGE 4 -->
-
 <div id="page4">
 
-  <div class="love-main">
-    <img src="love.png" onclick="showMemories()">
-  </div>
+<div class="love-main">
+<img src="love.png" onclick="openGallery()">
+</div>
 
-  <img src="image1.jpg" class="mem img1">
-  <img src="image2.jpg" class="mem img2">
-  <img src="image3.jpg" class="mem img3">
-  <img src="image4.jpg" class="mem img4">
+<div class="gallery" id="gallery">
+<img src="image1.jpg" class="img1">
+<img src="image2.jpg" class="img2">
+<img src="image3.jpg" class="img3">
+<img src="image4.jpg" class="img4">
+</div>
 
 </div>
 
 <script>
 
-/* NAVIGATION */
+function openPage2(){page1.style.display="none";page2.style.display="block";}
+function openPage3(){page2.style.display="none";page3.style.display="block";bgMusic.play();startTyping();}
+function openPage4(){page3.style.display="none";page4.style.display="block";}
 
-function openPage2(){
-  page1.style.display="none";
-  page2.style.display="block";
-}
-
-function openPage3(){
-  page2.style.display="none";
-  page3.style.display="block";
-}
-
-function openPage4(){
-  page3.style.display="none";
-  page4.style.display="block";
-}
-
-/* SHOW MEMORY IMAGES */
-
-function showMemories(){
-  document.querySelectorAll(".mem").forEach(img=>{
-    img.style.display="block";
-  });
+function openGallery(){
+document.querySelectorAll("#gallery img").forEach(img=>{
+img.style.display="block";
+});
 }
 
 </script>
