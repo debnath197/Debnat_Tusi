@@ -13,7 +13,7 @@ body{
   background:linear-gradient(to right,#ff758f,#ff7eb3);
 }
 
-/* TD BUTTON */
+/* TD BUTTON (Normal Pages) */
 .td-btn{
   position:absolute;
   bottom:40px;
@@ -36,7 +36,7 @@ body{
   object-fit:cover;
 }
 
-/* ================= PAGE 2 (RESTORED) ================= */
+/* ================= PAGE 2 ================= */
 
 #page2{
   display:none;
@@ -58,7 +58,6 @@ body{
   to{transform:scale(1.08);}
 }
 
-/* LEFT CARD */
 .left-card{
   position:absolute;
   top:50%;
@@ -84,18 +83,10 @@ body{
 .date{font-size:18px;}
 .from-line{margin-top:10px;font-size:15px;}
 
-.mini-frame{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-}
-
+.mini-frame{display:flex;gap:8px;margin-top:12px;}
 .mini-frame img{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  border:2px solid white;
-  object-fit:cover;
+  width:45px;height:45px;border-radius:50%;
+  border:2px solid white;object-fit:cover;
   box-shadow:0 0 10px #ff4d6d;
 }
 
@@ -106,7 +97,6 @@ body{
   text-shadow:0 0 8px #ff4d6d;
 }
 
-/* RIGHT LOVE TEXT */
 .side-love-text{
   position:absolute;
   right:40px;
@@ -130,7 +120,6 @@ body{
   text-shadow:0 0 10px #ff4d6d;
 }
 
-/* FLOATING HEARTS */
 .floating-hearts span{
   position:absolute;
   color:#ff4d6d;
@@ -200,9 +189,16 @@ body{
   transform:translate(-50%,-50%);
 }
 
-.love-main img{
-  width:350px;
-  cursor:pointer;
+/* BIG TD ONLY FOR PAGE 4 */
+.big-td{
+  position:relative !important;
+  bottom:auto !important;
+  left:auto !important;
+  transform:none !important;
+  font-size:48px;
+  padding:25px 80px;
+  border-radius:60px;
+  box-shadow:0 0 25px #ff4d6d;
 }
 
 .gallery{
@@ -281,8 +277,9 @@ One Year <br> Of <br> Endless Love 💖
 <!-- PAGE 4 -->
 <div id="page4">
 <div class="love-main">
-<img src="love.png" onclick="openGallery()">
+<div class="td-btn big-td" onclick="openGallery()">TD 💖</div>
 </div>
+
 <div class="gallery" id="gallery">
 <img src="image1.jpeg" id="img1">
 <img src="image2.jpeg" id="img2">
@@ -293,13 +290,11 @@ One Year <br> Of <br> Endless Love 💖
 
 <script>
 
-/* PAGE SWITCH */
 function openPage2(){ page1.style.display="none"; page2.style.display="block"; }
 function openPage3(){ page2.style.display="none"; page3.style.display="block"; startTyping(); }
 function openPage4(){ page3.style.display="none"; page4.style.display="block"; }
 function openGallery(){ document.getElementById("gallery").style.display="block"; }
 
-/* LOVE TIMER */
 const startDate = new Date("March 6, 2025");
 setInterval(()=>{
 const now = new Date();
@@ -309,17 +304,6 @@ document.getElementById("hours").innerHTML = Math.floor(diff / (1000*60*60));
 document.getElementById("minutes").innerHTML = Math.floor(diff / (1000*60));
 },1000);
 
-/* FLOATING HEARTS */
-setInterval(()=>{
-const heart=document.createElement("span");
-heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"%";
-heart.style.animationDuration=(3+Math.random()*5)+"s";
-document.querySelector(".floating-hearts").appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},500);
-
-/* TYPING POEM */
 const text=`One year with you, my sweetest light,
 Every moment feels so right.
 
