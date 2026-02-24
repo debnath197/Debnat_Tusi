@@ -13,7 +13,7 @@ body{
   background:linear-gradient(to right,#ff758f,#ff7eb3);
 }
 
-/* NORMAL TD BUTTON */
+/* TD BUTTON */
 .td-btn{
   position:absolute;
   bottom:40px;
@@ -51,7 +51,6 @@ body{
   height:100%;
   background:url("tusi bari1.jpeg") center/cover no-repeat;
   animation:zoomBg 20s infinite alternate;
-  z-index:0;
 }
 
 @keyframes zoomBg{
@@ -69,17 +68,6 @@ body{
   padding:30px 25px;
   border-radius:25px;
   color:white;
-  z-index:2;
-}
-
-.names{font-size:22px;margin:10px 0;}
-.date{font-size:18px;}
-.from-line{margin-top:10px;font-size:15px;}
-
-.mini-frame{display:flex;gap:8px;margin-top:12px;}
-.mini-frame img{
-  width:45px;height:45px;border-radius:50%;
-  border:2px solid white;object-fit:cover;
 }
 
 .love-counter{
@@ -96,7 +84,6 @@ body{
   font-size:42px;
   color:white;
   font-weight:bold;
-  z-index:2;
 }
 
 .memory-line{
@@ -106,7 +93,6 @@ body{
   text-align:center;
   color:white;
   font-size:18px;
-  z-index:2;
 }
 
 /* ================= PAGE 3 ================= */
@@ -157,55 +143,55 @@ body{
   height:100vh;
   background:url("bg2.jpg") center/cover no-repeat;
   position:relative;
+  overflow:hidden;
+  perspective:1200px;
 }
 
-/* CENTER BIG TD */
-.page4-center{
+/* Static Corner Images */
+.corner-img{
+  width:140px;
+  height:180px;
+  object-fit:cover;
+  border-radius:20px;
+  position:absolute;
+  box-shadow:0 0 25px #ff4d6d;
+}
+
+#c1{ top:20px; left:20px; }
+#c2{ top:20px; right:20px; }
+#c3{ bottom:20px; left:20px; }
+#c4{ bottom:20px; right:20px; }
+
+/* 3D Carousel */
+.memory-container{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  z-index:1000;   /* IMPORTANT */
+  width:300px;
+  height:300px;
+  transform-style:preserve-3d;
+  animation:rotate 25s linear infinite;
 }
 
-.page4-td{
-  font-size:60px;
-  font-weight:bold;
-  padding:30px 110px;
-  border-radius:80px;
-  cursor:pointer;
-  background:linear-gradient(45deg,#ff4d6d,#ff758f);
-  color:white;
-  box-shadow:0 0 40px #ff4d6d;
-  transition:0.3s;
+@keyframes rotate{
+  from{transform:translate(-50%,-50%) rotateY(0deg);}
+  to{transform:translate(-50%,-50%) rotateY(360deg);}
 }
 
-.page4-td:hover{
-  transform:scale(1.1);
-}
-
-/* GALLERY */
-.gallery{
-  display:none;
+.memory-container img{
   position:absolute;
-  width:100%;
-  height:100%;
-  z-index:500;
-}
-
-.gallery img{
-  width:150px;
-  height:150px;
-  border-radius:50%;
+  width:200px;
+  height:260px;
   object-fit:cover;
-  position:absolute;
-  box-shadow:0 0 20px #ff4d6d;
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(255,77,109,0.8);
 }
 
-#img1{ top:30px; left:30px; }
-#img2{ top:30px; right:30px; }
-#img3{ bottom:30px; left:30px; }
-#img4{ bottom:30px; right:30px; }
+.memory-container img:nth-child(1){ transform:rotateY(0deg) translateZ(400px); }
+.memory-container img:nth-child(2){ transform:rotateY(90deg) translateZ(400px); }
+.memory-container img:nth-child(3){ transform:rotateY(180deg) translateZ(400px); }
+.memory-container img:nth-child(4){ transform:rotateY(270deg) translateZ(400px); }
 
 </style>
 </head>
@@ -221,28 +207,14 @@ body{
 <!-- PAGE 2 -->
 <div id="page2">
 <div class="bg-zoom"></div>
-
 <div class="left-card">
   <h2>❤️ Our 1st Anniversary ❤️</h2>
-  <div class="names">Debnath 💖 Tusi</div>
-  <div class="date">06 / 03 / 2026</div>
-  <div class="from-line">📍 From 06-03-2025 → Forever ♾️</div>
-
-  <div class="mini-frame">
-    <img src="my.jpg">
-    <img src="wife.jpg">
-  </div>
-
   <div class="love-counter">
     ⏳ <span id="days"></span> Days<br>
     ⏱️ <span id="hours"></span> Hours<br>
     💞 <span id="minutes"></span> Minutes
   </div>
 </div>
-
-<div class="side-love-text">One Year Of Endless Love 💖</div>
-<p class="memory-line">365 Days of Togetherness 💞</p>
-
 <div class="td-btn" onclick="openPage3()">TD 💖</div>
 </div>
 
@@ -257,15 +229,18 @@ body{
 <!-- PAGE 4 -->
 <div id="page4">
 
-<div class="page4-center">
-  <div class="page4-td" onclick="openGallery()">TD 💖</div>
-</div>
+<!-- Static Corners -->
+<img src="image1.jpeg" class="corner-img" id="c1">
+<img src="image2.jpeg" class="corner-img" id="c2">
+<img src="image3.jpeg" class="corner-img" id="c3">
+<img src="image4.jpeg" class="corner-img" id="c4">
 
-<div class="gallery" id="gallery">
-<img src="image1.jpeg" id="img1">
-<img src="image2.jpeg" id="img2">
-<img src="image3.jpeg" id="img3">
-<img src="image4.jpeg" id="img4">
+<!-- 3D Rotating Center -->
+<div class="memory-container">
+<img src="image5.JPG">
+<img src="image6.JPG">
+<img src="image7.jpg">
+<img src="image8.jpg">
 </div>
 
 </div>
@@ -275,7 +250,6 @@ body{
 function openPage2(){ page1.style.display="none"; page2.style.display="block"; }
 function openPage3(){ page2.style.display="none"; page3.style.display="block"; startTyping(); }
 function openPage4(){ page3.style.display="none"; page4.style.display="block"; }
-function openGallery(){ document.getElementById("gallery").style.display="block"; }
 
 const startDate = new Date("March 6, 2025");
 setInterval(()=>{
@@ -286,17 +260,7 @@ document.getElementById("hours").innerHTML = Math.floor(diff / (1000*60*60));
 document.getElementById("minutes").innerHTML = Math.floor(diff / (1000*60));
 },1000);
 
-const text=`One year with you, my sweetest light,
-Every moment feels so right.
-
-In your smile I found my home,
-No more lonely roads to roam.
-
-Like ink on pages, our story stays,
-Written in love for endless days.
-
-Happy 1st Anniversary my love 💖`;
-
+const text=`Happy 1st Anniversary my love 💖`;
 let i=0;
 function startTyping(){
 document.getElementById("typing").innerHTML="";
