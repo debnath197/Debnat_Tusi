@@ -66,7 +66,7 @@ body{
   position:relative;
 }
 
-/* POEM DESIGN */
+/* POEM */
 .poem1-box{
   position:absolute;
   top:50%;
@@ -102,29 +102,39 @@ body{
   100%{transform:translateY(-50%) translateX(0);}
 }
 
-/* COUPLE PHOTO */
-.couple-pic{
+/* COUPLE LEFT & RIGHT */
+.couple-left,
+.couple-right{
   position:absolute;
-  right:30px;
   top:65%;
   transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+  text-align:center;
+  z-index:2;
 }
 
-.couple-pic img{
-  width:80px;
-  height:80px;
+.couple-left{ left:25px; }
+.couple-right{ right:25px; }
+
+.couple-left img,
+.couple-right img{
+  width:110px;
+  height:110px;
   object-fit:cover;
   border-radius:50%;
-  border:3px solid white;
+  border:4px solid white;
   animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
   from{box-shadow:0 0 10px #fff;}
-  to{box-shadow:0 0 25px #ff4d6d;}
+  to{box-shadow:0 0 30px #ff4d6d;}
+}
+
+/* LOCATION ICON */
+.location{
+  font-size:26px;
+  margin-bottom:6px;
+  animation:float 3s infinite;
 }
 
 /* PETALS */
@@ -176,8 +186,15 @@ body{
 
 <div class="heart">💖 💕 💖</div>
 
-<div class="couple-pic">
+<!-- LEFT PHOTO -->
+<div class="couple-left">
+  <div class="location">📍</div>
   <img src="my.jpg">
+</div>
+
+<!-- RIGHT PHOTO -->
+<div class="couple-right">
+  <div class="location">📍</div>
   <img src="wife.jpg">
 </div>
 
