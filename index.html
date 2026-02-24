@@ -36,7 +36,7 @@ body{
   object-fit:cover;
 }
 
-/* ================= PAGE 2 ================= */
+/* ================= PAGE 2 (RESTORED FULL) ================= */
 
 #page2{
   display:none;
@@ -68,6 +68,17 @@ body{
   padding:30px 25px;
   border-radius:25px;
   color:white;
+  border-left:4px solid #ff4d6d;
+}
+
+.names{font-size:22px;margin:10px 0;}
+.date{font-size:18px;}
+.from-line{margin-top:10px;font-size:15px;}
+
+.mini-frame{display:flex;gap:8px;margin-top:12px;}
+.mini-frame img{
+  width:45px;height:45px;border-radius:50%;
+  border:2px solid white;object-fit:cover;
 }
 
 .love-counter{
@@ -84,6 +95,7 @@ body{
   font-size:42px;
   color:white;
   font-weight:bold;
+  text-shadow:0 0 20px #ff4d6d;
 }
 
 .memory-line{
@@ -93,6 +105,18 @@ body{
   text-align:center;
   color:white;
   font-size:18px;
+}
+
+.floating-hearts span{
+  position:absolute;
+  color:#ff4d6d;
+  font-size:20px;
+  animation:floatHeart 6s linear infinite;
+}
+
+@keyframes floatHeart{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 
 /* ================= PAGE 3 ================= */
@@ -136,7 +160,7 @@ body{
   object-fit:cover;
 }
 
-/* ================= PAGE 4 ================= */
+/* ================= PAGE 4 (UNCHANGED YOUR OPTION C) ================= */
 
 #page4{
   display:none;
@@ -147,7 +171,6 @@ body{
   perspective:1200px;
 }
 
-/* Static Corner Images */
 .corner-img{
   width:140px;
   height:180px;
@@ -162,7 +185,6 @@ body{
 #c3{ bottom:20px; left:20px; }
 #c4{ bottom:20px; right:20px; }
 
-/* 3D Carousel */
 .memory-container{
   position:absolute;
   top:50%;
@@ -207,15 +229,35 @@ body{
 <!-- PAGE 2 -->
 <div id="page2">
 <div class="bg-zoom"></div>
+
 <div class="left-card">
   <h2>❤️ Our 1st Anniversary ❤️</h2>
+  <div class="names">Debnath 💖 Tusi</div>
+  <div class="date">06 / 03 / 2026</div>
+  <div class="from-line">📍 From 06-03-2025 → Forever ♾️</div>
+
+  <div class="mini-frame">
+    <img src="my.jpg">
+    <img src="wife.jpg">
+  </div>
+
   <div class="love-counter">
     ⏳ <span id="days"></span> Days<br>
     ⏱️ <span id="hours"></span> Hours<br>
     💞 <span id="minutes"></span> Minutes
   </div>
 </div>
+
+<div class="side-love-text">
+One Year <br> Of <br> Endless Love 💖
+</div>
+
+<p class="memory-line">365 Days of Togetherness 💞</p>
+
+<div class="floating-hearts"></div>
+
 <div class="td-btn" onclick="openPage3()">TD 💖</div>
+
 </div>
 
 <!-- PAGE 3 -->
@@ -229,13 +271,11 @@ body{
 <!-- PAGE 4 -->
 <div id="page4">
 
-<!-- Static Corners -->
 <img src="image1.jpeg" class="corner-img" id="c1">
 <img src="image2.jpeg" class="corner-img" id="c2">
 <img src="image3.jpeg" class="corner-img" id="c3">
 <img src="image4.jpeg" class="corner-img" id="c4">
 
-<!-- 3D Rotating Center -->
 <div class="memory-container">
 <img src="image5.JPG">
 <img src="image6.JPG">
@@ -251,6 +291,7 @@ function openPage2(){ page1.style.display="none"; page2.style.display="block"; }
 function openPage3(){ page2.style.display="none"; page3.style.display="block"; startTyping(); }
 function openPage4(){ page3.style.display="none"; page4.style.display="block"; }
 
+/* LOVE TIMER */
 const startDate = new Date("March 6, 2025");
 setInterval(()=>{
 const now = new Date();
@@ -260,7 +301,28 @@ document.getElementById("hours").innerHTML = Math.floor(diff / (1000*60*60));
 document.getElementById("minutes").innerHTML = Math.floor(diff / (1000*60));
 },1000);
 
-const text=`Happy 1st Anniversary my love 💖`;
+/* FLOATING HEARTS */
+setInterval(()=>{
+const heart=document.createElement("span");
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"%";
+heart.style.animationDuration=(3+Math.random()*5)+"s";
+document.querySelector(".floating-hearts").appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+
+/* FIXED TYPING POEM */
+const text=`One year with you, my sweetest light,
+Every moment feels so right.
+
+In your smile I found my home,
+No more lonely roads to roam.
+
+Like ink on pages, our story stays,
+Written in love for endless days.
+
+Happy 1st Anniversary my love 💖`;
+
 let i=0;
 function startTyping(){
 document.getElementById("typing").innerHTML="";
