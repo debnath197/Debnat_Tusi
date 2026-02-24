@@ -66,15 +66,6 @@ body{
   position:relative;
 }
 
-/* REMOVE DARK OVERLAY */
-#page3::before{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0);
-}
-
 /* POEM DESIGN */
 .poem1-box{
   position:absolute;
@@ -94,7 +85,7 @@ body{
   box-shadow:0 0 25px rgba(0,0,0,0.5);
 }
 
-/* HEART ANIMATION */
+/* HEART */
 .heart{
   position:absolute;
   right:30px;
@@ -103,7 +94,6 @@ body{
   font-size:30px;
   color:#ff4d6d;
   animation:float 4s infinite;
-  z-index:2;
 }
 
 @keyframes float{
@@ -112,7 +102,7 @@ body{
   100%{transform:translateY(-50%) translateX(0);}
 }
 
-/* COUPLE PHOTO – LOCATION POSITION */
+/* COUPLE PHOTO */
 .couple-pic{
   position:absolute;
   right:30px;
@@ -121,7 +111,6 @@ body{
   display:flex;
   flex-direction:column;
   gap:12px;
-  z-index:2;
 }
 
 .couple-pic img{
@@ -130,15 +119,33 @@ body{
   object-fit:cover;
   border-radius:50%;
   border:3px solid white;
-  box-shadow:0 0 15px rgba(0,0,0,0.5);
+  animation:glow 2s infinite alternate;
 }
 
-/* MOBILE RESPONSIVE */
-@media(max-width:600px){
-  .couple-pic img{
-    width:70px;
-    height:70px;
-  }
+@keyframes glow{
+  from{box-shadow:0 0 10px #fff;}
+  to{box-shadow:0 0 25px #ff4d6d;}
+}
+
+/* PETALS */
+.petals{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+
+.petal{
+  position:absolute;
+  top:-20px;
+  font-size:22px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh);}
 }
 
 </style>
@@ -161,26 +168,20 @@ body{
 <!-- PAGE 3 -->
 <div id="page3">
 
-  <div class="poem1-box">
-    One year with you, my sweetest light,<br>
-    Every moment feels so right.<br><br>
+<audio id="bgMusic" src="music.mp3" loop></audio>
 
-    In your smile I found my home,<br>
-    No more lonely roads to roam.<br><br>
+<div class="poem1-box">
+  <span id="typing"></span>
+</div>
 
-    Like ink on pages, our story stays,<br>
-    Written in love for endless days.<br><br>
+<div class="heart">💖 💕 💖</div>
 
-    Happy 1st Anniversary my love 💖
-  </div>
+<div class="couple-pic">
+  <img src="my.jpg">
+  <img src="wife.jpg">
+</div>
 
-  <div class="heart">💖 💕 💖</div>
-
-  <!-- YOUR PHOTOS -->
-  <div class="couple-pic">
-    <img src="my.jpg">
-    <img src="wife.jpg">
-  </div>
+<div class="petals"></div>
 
 </div>
 
@@ -194,7 +195,48 @@ function openPage2(){
 function openPage3(){
   page2.style.display="none";
   page3.style.display="block";
+  document.getElementById("bgMusic").play();
+  startTyping();
 }
+
+/* TYPING EFFECT */
+const text = `One year with you, my sweetest light,
+Every moment feels so right.
+
+In your smile I found my home,
+No more lonely roads to roam.
+
+Like ink on pages, our story stays,
+Written in love for endless days.
+
+Happy 1st Anniversary my love 💖`;
+
+let i = 0;
+
+function startTyping(){
+  const speed = 50;
+  function type(){
+    if(i < text.length){
+      document.getElementById("typing").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}
+
+/* PETALS */
+function createPetal(){
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+  petal.innerHTML="🌹";
+  petal.style.left=Math.random()*100+"%";
+  petal.style.animationDuration=(3+Math.random()*5)+"s";
+  document.querySelector(".petals").appendChild(petal);
+  setTimeout(()=>{petal.remove();},8000);
+}
+
+setInterval(createPetal,300);
 
 </script>
 
