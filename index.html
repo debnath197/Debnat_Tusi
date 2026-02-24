@@ -50,12 +50,6 @@ body{
   width:100%;
   height:100%;
   background:url("tusi bari1.jpeg") center/cover no-repeat;
-  animation:zoomBg 20s infinite alternate;
-}
-
-@keyframes zoomBg{
-  from{transform:scale(1);}
-  to{transform:scale(1.08);}
 }
 
 .left-card{
@@ -64,48 +58,17 @@ body{
   left:30px;
   transform:translateY(-50%);
   background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(12px);
   padding:30px 25px;
   border-radius:25px;
   color:white;
   text-align:left;
   border-left:4px solid #ff4d6d;
-  box-shadow:0 0 25px rgba(0,0,0,0.3);
-}
-
-.names{font-size:22px;margin:10px 0;}
-.date{font-size:18px;}
-.from-line{margin-top:10px;font-size:15px;}
-
-.mini-frame{display:flex;gap:8px;margin-top:12px;}
-.mini-frame img{
-  width:45px;height:45px;border-radius:50%;
-  border:2px solid white;object-fit:cover;
 }
 
 .love-counter{
   margin-top:12px;
-  font-size:15px;
+  font-size:16px;
   line-height:1.6;
-}
-
-.side-love-text{
-  position:absolute;
-  right:40px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:42px;
-  color:white;
-  font-weight:bold;
-}
-
-.memory-line{
-  position:absolute;
-  bottom:110px;
-  width:100%;
-  text-align:center;
-  color:white;
-  font-size:18px;
 }
 
 /* ================= PAGE 3 ================= */
@@ -126,7 +89,7 @@ body{
   max-width:420px;
   padding:25px;
   border-radius:20px;
-  background:rgba(0,0,0,0.35);
+  background:rgba(0,0,0,0.4);
   color:#ffd60a;
   font-size:20px;
   line-height:1.9;
@@ -156,10 +119,8 @@ body{
   height:100vh;
   background:url("bg2.jpg") center/cover no-repeat;
   position:relative;
-  overflow:hidden;
 }
 
-/* Center Heart */
 .love-main{
   position:absolute;
   top:50%;
@@ -172,14 +133,11 @@ body{
   cursor:pointer;
 }
 
-/* Gallery */
 .gallery{
   display:none;
   position:absolute;
   width:100%;
   height:100%;
-  top:0;
-  left:0;
 }
 
 .gallery img{
@@ -191,7 +149,6 @@ body{
   box-shadow:0 0 20px #ff4d6d;
 }
 
-/* 4 Corners */
 #img1{ top:30px; left:30px; }
 #img2{ top:30px; right:30px; }
 #img3{ bottom:30px; left:30px; }
@@ -211,61 +168,114 @@ body{
 <!-- PAGE 2 -->
 <div id="page2">
 <div class="bg-zoom"></div>
+
 <div class="left-card">
   <h2>❤️ Our 1st Anniversary ❤️</h2>
   <div class="names">Debnath 💖 Tusi</div>
-  <div class="date">06 / 03 / 2026</div>
-  <div class="from-line">📍 From 06-03-2025 → Forever ♾️</div>
-  <div class="mini-frame">
-    <img src="my.jpg">
-    <img src="wife.jpg">
+
+  <div class="love-counter">
+    ⏳ <span id="days"></span> Days<br>
+    ⏱️ <span id="hours"></span> Hours<br>
+    💞 <span id="minutes"></span> Minutes
   </div>
 </div>
-<div class="side-love-text">One Year Of Endless Love 💖</div>
+
 <div class="td-btn" onclick="openPage3()">TD 💖</div>
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3">
-<div class="poem1-box">Happy 1st Anniversary 💖</div>
+
+<div class="poem1-box">
+  <span id="typing"></span>
+</div>
+
+<div class="couple-left">
+<img src="my.jpg">
+</div>
+
+<div class="couple-right">
+<img src="wife.jpg">
+</div>
+
 <div class="td-btn" onclick="openPage4()">TD 💖</div>
+
 </div>
 
 <!-- PAGE 4 -->
 <div id="page4">
 
 <div class="love-main">
-  <img src="love.png" onclick="openGallery()">
+<img src="love.png" onclick="openGallery()">
 </div>
 
 <div class="gallery" id="gallery">
-  <img src="image1.jpeg" id="img1">
-  <img src="image2.jpeg" id="img2">
-  <img src="image3.jpeg" id="img3">
-  <img src="image4.jpeg" id="img4">
+<img src="image1.jpeg" id="img1">
+<img src="image2.jpeg" id="img2">
+<img src="image3.jpeg" id="img3">
+<img src="image4.jpeg" id="img4">
 </div>
 
 </div>
 
 <script>
 
+/* PAGE SWITCH */
 function openPage2(){
-document.getElementById("page1").style.display="none";
-document.getElementById("page2").style.display="block";
+page1.style.display="none";
+page2.style.display="block";
 }
 
 function openPage3(){
-document.getElementById("page2").style.display="none";
-document.getElementById("page3").style.display="block";
+page2.style.display="none";
+page3.style.display="block";
+startTyping();
 }
 
 function openPage4(){
-document.getElementById("page3").style.display="none";
-document.getElementById("page4").style.display="block";
+page3.style.display="none";
+page4.style.display="block";
 }
 
 function openGallery(){
 document.getElementById("gallery").style.display="block";
+}
+
+/* LOVE TIMER */
+const startDate = new Date("March 6, 2025");
+
+setInterval(()=>{
+const now = new Date();
+const diff = now - startDate;
+
+document.getElementById("days").innerHTML = Math.floor(diff / (1000*60*60*24));
+document.getElementById("hours").innerHTML = Math.floor(diff / (1000*60*60));
+document.getElementById("minutes").innerHTML = Math.floor(diff / (1000*60));
+},1000);
+
+/* TYPING POEM */
+const text=`One year with you, my sweetest light,
+Every moment feels so right.
+
+In your smile I found my home,
+No more lonely roads to roam.
+
+Like ink on pages, our story stays,
+Written in love for endless days.
+
+Happy 1st Anniversary my love 💖`;
+
+let i=0;
+function startTyping(){
+document.getElementById("typing").innerHTML="";
+i=0;
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,50);
+}}
+type();
 }
 
 </script>
