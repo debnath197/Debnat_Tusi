@@ -147,7 +147,6 @@ body{
   perspective:1500px;
 }
 
-/* Corner Static Images */
 .corner-img{
   width:150px;
   height:190px;
@@ -162,7 +161,6 @@ body{
 #c3{ bottom:20px; left:20px; }
 #c4{ bottom:20px; right:20px; }
 
-/* 3D Rotating Container */
 .memory-container{
   position:absolute;
   top:50%;
@@ -188,7 +186,6 @@ body{
   box-shadow:0 0 30px rgba(255,77,109,0.9);
 }
 
-/* 8 Images in Circle */
 .memory-container img:nth-child(1){ transform:rotateY(0deg) translateZ(500px); }
 .memory-container img:nth-child(2){ transform:rotateY(45deg) translateZ(500px); }
 .memory-container img:nth-child(3){ transform:rotateY(90deg) translateZ(500px); }
@@ -209,7 +206,7 @@ body{
   <div class="td-btn" onclick="openPage2()">TD 💖</div>
 </div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2 (ONLY ONE COPY) -->
 <div id="page2">
 <div class="bg-zoom"></div>
 
@@ -231,10 +228,7 @@ body{
   </div>
 </div>
 
-<div class="side-love-text">
-One Year <br> Of <br> Endless Love 💖
-</div>
-
+<div class="side-love-text">One Year Of Endless Love 💖</div>
 <p class="memory-line">365 Days of Togetherness 💞</p>
 
 <div class="td-btn" onclick="openPage3()">TD 💖</div>
@@ -275,7 +269,6 @@ function openPage2(){ page1.style.display="none"; page2.style.display="block"; }
 function openPage3(){ page2.style.display="none"; page3.style.display="block"; startTyping(); }
 function openPage4(){ page3.style.display="none"; page4.style.display="block"; }
 
-/* LOVE TIMER */
 const startDate = new Date("March 6, 2025");
 setInterval(()=>{
 const now = new Date();
@@ -285,15 +278,8 @@ document.getElementById("hours").innerHTML = Math.floor(diff / (1000*60*60));
 document.getElementById("minutes").innerHTML = Math.floor(diff / (1000*60));
 },1000);
 
-/* TYPING POEM */
 const text=`One year with you, my sweetest light,
 Every moment feels so right.
-
-In your smile I found my home,
-No more lonely roads to roam.
-
-Like ink on pages, our story stays,
-Written in love for endless days.
 
 Happy 1st Anniversary my love 💖`;
 
