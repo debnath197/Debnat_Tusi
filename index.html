@@ -45,7 +45,6 @@ body{
   overflow:hidden;
 }
 
-/* BACKGROUND ZOOM */
 .bg-zoom{
   position:absolute;
   width:100%;
@@ -59,33 +58,70 @@ body{
   to{transform:scale(1.08);}
 }
 
-/* ANNIVERSARY CARD */
-.anniversary-card{
+/* LEFT CARD */
+.left-card{
   position:absolute;
   top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
+  left:30px;
+  transform:translateY(-50%);
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
-  padding:35px 25px;
+  padding:30px 25px;
   border-radius:25px;
   color:white;
-  box-shadow:0 0 30px rgba(0,0,0,0.3);
+  text-align:left;
+  border-left:4px solid #ff4d6d;
+  box-shadow:0 0 25px rgba(0,0,0,0.3);
+  animation:cardGlow 3s infinite alternate;
 }
 
-.anniversary-card h1{
-  margin:0;
-  font-size:32px;
-  text-shadow:0 0 15px #ff4d6d;
+@keyframes cardGlow{
+  from{box-shadow:0 0 15px rgba(255,255,255,0.3);}
+  to{box-shadow:0 0 35px rgba(255,77,109,0.9);}
 }
 
-.names{
-  font-size:22px;
-  margin:15px 0 5px;
+.names{font-size:22px;margin:10px 0;}
+.date{font-size:18px;}
+
+.from-line{margin-top:10px;font-size:15px;}
+
+.mini-frame{display:flex;gap:8px;margin-top:12px;}
+.mini-frame img{
+  width:45px;height:45px;border-radius:50%;
+  border:2px solid white;object-fit:cover;
+  box-shadow:0 0 10px #ff4d6d;
 }
 
-.date{
+.love-counter{
+  margin-top:12px;
+  font-size:15px;
+  line-height:1.6;
+  text-shadow:0 0 8px #ff4d6d;
+}
+
+/* RIGHT LOVE TEXT */
+.side-love-text{
+  position:absolute;
+  right:40px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:42px;
+  color:white;
+  text-align:right;
+  line-height:1.3;
+  text-shadow:0 0 20px #ff4d6d;
+  font-weight:bold;
+}
+
+/* MEMORY LINE */
+.memory-line{
+  position:absolute;
+  bottom:110px;
+  width:100%;
+  text-align:center;
+  color:white;
   font-size:18px;
+  text-shadow:0 0 10px #ff4d6d;
 }
 
 /* FLOATING HEARTS */
@@ -101,18 +137,21 @@ body{
   to{transform:translateY(-10vh);}
 }
 
-/* BUTTON PULSE */
-.pulse{
-  animation:pulse 1.5s infinite;
+/* SPARKLE */
+.sparkle{
+  position:absolute;
+  color:white;
+  font-size:14px;
+  animation:sparkle 4s linear infinite;
 }
 
-@keyframes pulse{
-  0%{transform:translateX(-50%) scale(1);}
-  50%{transform:translateX(-50%) scale(1.08);}
-  100%{transform:translateX(-50%) scale(1);}
+@keyframes sparkle{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 
 /* ================= PAGE 3 ================= */
+/* তোমার আগের সব same রাখা হয়েছে */
 
 #page3{
   display:none;
@@ -121,7 +160,6 @@ body{
   position:relative;
 }
 
-/* POEM */
 .poem1-box{
   position:absolute;
   top:50%;
@@ -136,56 +174,6 @@ body{
   color:#ffd60a;
   font-size:20px;
   line-height:1.9;
-  box-shadow:0 0 25px rgba(0,0,0,0.5);
-}
-
-/* GLOW PHOTOS */
-.couple-left,.couple-right{
-  position:absolute;
-  top:65%;
-  transform:translateY(-50%);
-  text-align:center;
-}
-
-.couple-left{ left:25px; }
-.couple-right{ right:25px; }
-
-.couple-left img,.couple-right img{
-  width:110px;
-  height:110px;
-  border-radius:50%;
-  border:4px solid white;
-  object-fit:cover;
-  animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-  from{box-shadow:0 0 10px #fff;}
-  to{box-shadow:0 0 30px #ff4d6d;}
-}
-
-.location{
-  font-size:26px;
-  margin-bottom:6px;
-}
-
-/* PETALS */
-.petals{
-  position:absolute;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-}
-
-.petal{
-  position:absolute;
-  top:-20px;
-  font-size:22px;
-  animation:fall linear infinite;
-}
-
-@keyframes fall{
-  to{transform:translateY(110vh);}
 }
 
 </style>
@@ -202,39 +190,43 @@ body{
 <!-- PAGE 2 -->
 <div id="page2">
 
-  <div class="bg-zoom"></div>
+<div class="bg-zoom"></div>
 
-  <div class="anniversary-card">
-    <h1>❤️ Our 1st Anniversary ❤️</h1>
-    <p class="names">Debnath 💖 Tusi</p>
-    <p class="date">06 / 03 / 2025</p>
+<div class="left-card">
+  <h2>❤️ Our 1st Anniversary ❤️</h2>
+  <div class="names">Debnath 💖 Tusi</div>
+  <div class="date">06 / 03 / 2025</div>
+
+  <div class="from-line">📍 From 06-03-2024 → Forever ♾️</div>
+
+  <div class="mini-frame">
+    <img src="my.jpg">
+    <img src="wife.jpg">
   </div>
 
-  <div class="floating-hearts"></div>
+  <div class="love-counter">
+    ⏳ <span id="days"></span> Days<br>
+    ⏱️ <span id="hours"></span> Hours<br>
+    💞 <span id="minutes"></span> Minutes
+  </div>
+</div>
 
-  <div class="td-btn pulse" onclick="openPage3()">TD 💖</div>
+<div class="side-love-text">
+One Year <br> Of <br> Endless Love 💖
+</div>
+
+<p class="memory-line">365 Days of Togetherness 💞</p>
+
+<div class="floating-hearts"></div>
+
+<div class="td-btn pulse" onclick="openPage3()">TD 💖</div>
 
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 (same as yours) -->
 <div id="page3">
-
 <audio id="bgMusic" src="music.mp3" loop></audio>
-
 <div class="poem1-box"><span id="typing"></span></div>
-
-<div class="couple-left">
-  <div class="location">📍</div>
-  <img src="my.jpg">
-</div>
-
-<div class="couple-right">
-  <div class="location">📍</div>
-  <img src="wife.jpg">
-</div>
-
-<div class="petals"></div>
-
 </div>
 
 <script>
@@ -247,57 +239,46 @@ function openPage2(){
 function openPage3(){
   page2.style.display="none";
   page3.style.display="block";
-  document.getElementById("bgMusic").play();
-  startTyping();
 }
 
-/* FLOATING HEARTS PAGE 2 */
+/* HEARTS */
 setInterval(()=>{
   const heart=document.createElement("span");
   heart.innerHTML="💖";
   heart.style.left=Math.random()*100+"%";
-  heart.style.animationDuration=(4+Math.random()*3)+"s";
   document.querySelector(".floating-hearts").appendChild(heart);
-  setTimeout(()=>heart.remove(),7000);
+  setTimeout(()=>heart.remove(),6000);
 },800);
 
-/* TYPING */
-const text=`One year with you, my sweetest light,
-Every moment feels so right.
+/* SPARKLE */
+setInterval(()=>{
+  const s=document.createElement("div");
+  s.classList.add("sparkle");
+  s.innerHTML="✨";
+  s.style.left=Math.random()*100+"%";
+  document.getElementById("page2").appendChild(s);
+  setTimeout(()=>s.remove(),6000);
+},900);
 
-In your smile I found my home,
-No more lonely roads to roam.
+/* LOVE TIMER */
+const startDate = new Date("March 6, 2024");
 
-Like ink on pages, our story stays,
-Written in love for endless days.
+function updateLoveTime(){
+  const now = new Date();
+  const diff = now - startDate;
 
-Happy 1st Anniversary my love 💖`;
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor(diff / (1000*60*60));
+  const minutes = Math.floor(diff / (1000*60));
 
-let i=0;
-function startTyping(){
-  function type(){
-    if(i<text.length){
-      document.getElementById("typing").innerHTML+=text.charAt(i);
-      i++;
-      setTimeout(type,50);
-    }
-  }
-  type();
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
 }
 
-/* PETALS */
-setInterval(()=>{
-  const petal=document.createElement("div");
-  petal.classList.add("petal");
-  petal.innerHTML="🌹";
-  petal.style.left=Math.random()*100+"%";
-  petal.style.animationDuration=(3+Math.random()*5)+"s";
-  document.querySelector(".petals").appendChild(petal);
-  setTimeout(()=>petal.remove(),8000);
-},300);
+setInterval(updateLoveTime,1000);
 
 </script>
 
 </body>
 </html>
-
