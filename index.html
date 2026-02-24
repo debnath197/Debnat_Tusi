@@ -14,7 +14,7 @@ body{
   overflow:hidden;
 }
 
-/* ALL PAGES LAYER FIX */
+/* PAGE LAYER SYSTEM */
 #page1,#page2,#page3,#page4{
   position:absolute;
   width:100%;
@@ -74,17 +74,6 @@ body{
   padding:30px 25px;
   border-radius:25px;
   color:white;
-  z-index:10;
-}
-
-.names{font-size:22px;margin:10px 0;}
-.date{font-size:18px;}
-.from-line{margin-top:10px;font-size:15px;}
-
-.mini-frame{display:flex;gap:8px;margin-top:12px;}
-.mini-frame img{
-  width:45px;height:45px;border-radius:50%;
-  border:2px solid white;object-fit:cover;
 }
 
 .love-counter{
@@ -101,7 +90,6 @@ body{
   font-size:42px;
   color:white;
   font-weight:bold;
-  z-index:10;
 }
 
 .memory-line{
@@ -111,7 +99,6 @@ body{
   text-align:center;
   color:white;
   font-size:18px;
-  z-index:10;
 }
 
 /* ================= PAGE 3 ================= */
@@ -160,7 +147,6 @@ body{
   overflow:hidden;
 }
 
-/* Corner Images */
 .corner-img{
   width:150px;
   height:190px;
@@ -175,7 +161,6 @@ body{
 #c3{ bottom:20px; left:20px; }
 #c4{ bottom:20px; right:20px; }
 
-/* 3D Carousel */
 .memory-container{
   position:absolute;
   top:50%;
@@ -201,7 +186,6 @@ body{
   box-shadow:0 0 30px rgba(255,77,109,0.9);
 }
 
-/* 8 Image Positions */
 .memory-container img:nth-child(1){ transform:rotateY(0deg) translateZ(500px); }
 .memory-container img:nth-child(2){ transform:rotateY(45deg) translateZ(500px); }
 .memory-container img:nth-child(3){ transform:rotateY(90deg) translateZ(500px); }
@@ -225,28 +209,16 @@ body{
 <!-- PAGE 2 -->
 <div id="page2">
 <div class="bg-zoom"></div>
-
 <div class="left-card">
   <h2>❤️ Our 1st Anniversary ❤️</h2>
-  <div class="names">Debnath 💖 Tusi</div>
-  <div class="date">06 / 03 / 2026</div>
-  <div class="from-line">📍 From 06-03-2025 → Forever ♾️</div>
-
-  <div class="mini-frame">
-    <img src="my.jpg">
-    <img src="wife.jpg">
-  </div>
-
   <div class="love-counter">
     ⏳ <span id="days"></span> Days<br>
     ⏱️ <span id="hours"></span> Hours<br>
     💞 <span id="minutes"></span> Minutes
   </div>
 </div>
-
 <div class="side-love-text">One Year Of Endless Love 💖</div>
 <p class="memory-line">365 Days of Togetherness 💞</p>
-
 <div class="td-btn" onclick="showPage('page3'); startTyping();">TD 💖</div>
 </div>
 
@@ -260,12 +232,10 @@ body{
 
 <!-- PAGE 4 -->
 <div id="page4">
-
 <img src="image1.jpeg" class="corner-img" id="c1">
 <img src="image2.jpeg" class="corner-img" id="c2">
 <img src="image3.jpeg" class="corner-img" id="c3">
 <img src="image4.jpeg" class="corner-img" id="c4">
-
 <div class="memory-container">
 <img src="image5.JPG">
 <img src="image6.JPG">
@@ -276,7 +246,6 @@ body{
 <img src="image11.JPG">
 <img src="image12.jpg">
 </div>
-
 </div>
 
 <script>
@@ -299,19 +268,32 @@ document.getElementById("hours").innerHTML = Math.floor(diff / (1000*60*60));
 document.getElementById("minutes").innerHTML = Math.floor(diff / (1000*60));
 },1000);
 
-/* TYPING */
-const text=`Happy 1st Anniversary my love 💖`;
+/* FIXED TYPING */
+const text = `One year with you, my sweetest light,
+Every moment feels so right.
+
+In your smile I found my home,
+No more lonely roads to roam.
+
+Like ink on pages, our story stays,
+Written in love for endless days.
+
+Happy 1st Anniversary my love 💖`;
+
 let i=0;
 function startTyping(){
-document.getElementById("typing").innerHTML="";
-i=0;
-function type(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,50);
-}}
-type();
+  const el = document.getElementById("typing");
+  el.innerHTML="";
+  i=0;
+
+  function type(){
+    if(i < text.length){
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type,40);
+    }
+  }
+  type();
 }
 
 </script>
