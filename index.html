@@ -49,7 +49,7 @@ body{
   object-fit:cover;
 }
 
-/* ================= PAGE 2 RESPONSIVE ================= */
+/* ================= PAGE 2 FINAL FIX ================= */
 
 #page2{
   position:absolute;
@@ -64,68 +64,70 @@ body{
   height:100%;
   background:url("tusi bari1.jpeg") center/cover no-repeat;
   animation:zoomBg 20s infinite alternate;
+  filter:brightness(0.9);
 }
 
 @keyframes zoomBg{
   from{transform:scale(1);}
-  to{transform:scale(1.08);}
+  to{transform:scale(1.05);}
 }
 
+/* CARD POSITION TOP LEFT */
 .left-card{
   position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:90%;
-  max-width:420px;
+  top:80px;
+  left:20px;
+  width:88%;
+  max-width:380px;
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
-  padding:25px 18px;
+  padding:22px 16px;
   border-radius:25px;
   color:white;
   text-align:center;
 }
 
-.left-card h2{font-size:22px;}
-.names{font-size:18px;margin:8px 0;}
-.date{font-size:16px;}
-.from-line{margin-top:6px;font-size:14px;}
+.left-card h2{font-size:20px;}
+.names{font-size:17px;margin:6px 0;}
+.date{font-size:15px;}
+.from-line{margin-top:6px;font-size:13px;}
 
 .mini-frame{
   display:flex;
   justify-content:center;
   gap:10px;
-  margin-top:12px;
+  margin-top:10px;
 }
 
 .mini-frame img{
-  width:50px;
-  height:50px;
+  width:48px;
+  height:48px;
   border-radius:50%;
   border:2px solid white;
   object-fit:cover;
 }
 
 .love-counter{
-  margin-top:12px;
-  font-size:14px;
+  margin-top:10px;
+  font-size:13px;
   line-height:1.6;
 }
 
+/* BOTTOM TEXT UP */
 .side-love-text{
   position:absolute;
-  bottom:90px;
+  bottom:140px;
   width:100%;
   text-align:center;
   font-size:26px;
   color:white;
   font-weight:bold;
-  padding:0 10px;
+  padding:0 15px;
 }
 
 .memory-line{
   position:absolute;
-  bottom:60px;
+  bottom:110px;
   width:100%;
   text-align:center;
   color:white;
@@ -221,10 +223,10 @@ body{
 .memory-container img:nth-child(2){ transform:rotateY(45deg) translateZ(500px); }
 .memory-container img:nth-child(3){ transform:rotateY(90deg) translateZ(500px); }
 .memory-container img:nth-child(4){ transform:rotateY(135deg) translateZ(500px); }
-.memory-container img:nth-child(5){ transform:rotateY(180deg) translateZ(500px); }
-.memory-container img:nth-child(6){ transform:rotateY(225deg) translateZ(500px); }
-.memory-container img:nth-child(7){ transform:rotateY(270deg) translateZ(500px); }
-.memory-container img:nth-child(8){ transform:rotateY(315deg) translateZ(500px); }
+memory-container img:nth-child(5){ transform:rotateY(180deg) translateZ(500px); }
+memory-container img:nth-child(6){ transform:rotateY(225deg) translateZ(500px); }
+memory-container img:nth-child(7){ transform:rotateY(270deg) translateZ(500px); }
+memory-container img:nth-child(8){ transform:rotateY(315deg) translateZ(500px); }
 
 </style>
 </head>
